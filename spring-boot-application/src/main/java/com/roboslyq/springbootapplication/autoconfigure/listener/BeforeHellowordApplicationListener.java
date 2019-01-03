@@ -1,0 +1,19 @@
+package com.roboslyq.springbootapplication.autoconfigure.listener;
+
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+
+/**
+ * @author roboslyq
+ * @data 2019/1/1 10:47
+ * @desc :
+ **/
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class BeforeHellowordApplicationListener implements ApplicationListener<ContextRefreshedEvent> {
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        System.out.println("最高优先级事件-->"+ event.getTimestamp()+"---"+event.getSource());
+    }
+}
