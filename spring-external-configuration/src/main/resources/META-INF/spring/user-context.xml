@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- User Bean -->
-    <bean id="user" class="com.roboslyq.external.configuration.entity.User">
-        <property name="id" value="${user.id}"/>
-        <property name="name" value="${user.name}"/>
-    </bean>
+    <!--<bean id="user" class="com.roboslyq.external.configuration.entity.User">-->
+        <!--<property name="id" value="${user.id}"/>-->
+        <!--<property name="name" value="${user.name}"/>-->
+    <!--</bean>-->
 </beans>

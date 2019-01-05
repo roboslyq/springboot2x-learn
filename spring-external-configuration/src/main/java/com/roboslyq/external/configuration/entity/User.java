@@ -1,6 +1,8 @@
 package com.roboslyq.external.configuration.entity;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author roboslyq
@@ -11,7 +13,54 @@ public class User {
     private Long id;
     private String name;
     private Long age;
+    private City city = new City();
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", city=" + city +
+                '}';
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public static class City{
+        private String postCode;
+        private String name;
+
+        public String getPostCode() {
+            return postCode;
+        }
+
+        public void setPostCode(String postCode) {
+            this.postCode = postCode;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "City{" +
+                    "postCode='" + postCode + '\'' +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+    }
     public Long getId() {
         return id;
     }
@@ -36,12 +85,4 @@ public class User {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
