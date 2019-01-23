@@ -22,7 +22,7 @@ public class SpringThymeleaf {
         Context context = new Context();
         //Spring资源加载器(主要功能是定位寻址)
         ResourceLoader resourceLoader = new DefaultResourceLoader();
-        Resource resource = resourceLoader.getResource("classpath:/templates/hello-world.html");
+        Resource resource = resourceLoader.getResource("classpath:/templates/hello-world.jsp");
         //获取原始文件流
         File file = resource.getFile();
         InputStream inputStream = new FileInputStream(file);
