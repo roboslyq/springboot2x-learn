@@ -12,6 +12,7 @@
         <module>spring-mvc</module>
         <module>spring-external-configuration</module>
         <module>spring-mvc-view</module>
+        <module>spring-webflux</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,8 +29,6 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-
-
 	<build>
 		<plugins>
 			<plugin>
