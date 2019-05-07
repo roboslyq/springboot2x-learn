@@ -1,6 +1,6 @@
 /**
  * Copyright (C), 2015-2019
- * FileName: ExceptionHandlerDemo
+ * FileName: WebExceptionHandlerDemo
  * Author:   luo.yongqian
  * Date:     2019/5/7 18:44
  * Description: webflux统一异常处理
@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
  * @create 2019/5/7
  * @since 1.0.0
  */
-public class ExceptionHandlerDemo implements WebExceptionHandler {
+public class WebExceptionHandlerDemo implements WebExceptionHandler {
 
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
@@ -41,6 +41,6 @@ public class ExceptionHandlerDemo implements WebExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public String test(Exception e) {
-        return "@ExceptionHandlerDemo: " + e.getMessage();
+        return "@WebExceptionHandlerDemo: " + e.getMessage();
     }
 }
