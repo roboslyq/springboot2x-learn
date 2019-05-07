@@ -22,6 +22,8 @@ public class SampleWebFluxApplication {
     @Bean
     public RouterFunction<ServerResponse> monoRouterFunction(EchoHandler echoHandler) {
         System.out.println("init....");
-        return route(GET("/echo"), echoHandler::echo);
+        return route(GET("/echo"), echoHandler::echo)
+                .andRoute(GET("/echo1"), echoHandler::echo)
+                .andRoute(GET("/echo2"), echoHandler::echo);
     }
 }
