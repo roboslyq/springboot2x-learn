@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @data 2018/12/31 10:22
  * @desc :
  **/
-@ComponentScan(basePackages = "com.roboslyq.autoconfiguration.repository")
+@ComponentScan(basePackages = "com.roboslyq.autoconfiguration.mapper")
 public class RepositoryBootstrap {
     public static void main(String[] args) {
         ConfigurableApplicationContext configurableApplicationContext =

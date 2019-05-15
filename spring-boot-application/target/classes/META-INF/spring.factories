@@ -1,0 +1,8 @@
+# ApplicationInitializer扩展实战
+org.springframework.context.ApplicationContextInitializer=\
+com.roboslyq.springbootapplication.context.HelloworldApplicationContextInitializer,\
+com.roboslyq.springbootapplication.context.HelloworldApplicationContextInitializer2
+
+org.springframework.context.ApplicationListener=\
+com.roboslyq.springbootapplication.autoconfigure.listener.AfterHellowordApplicationListener,\
+com.roboslyq.springbootapplication.autoconfigure.listener.BeforeHellowordApplicationListener

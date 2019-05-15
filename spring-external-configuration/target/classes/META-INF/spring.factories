@@ -1,0 +1,16 @@
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+com.roboslyq.external.configuration.listener.ExtendPropertySourcesRunListener
+
+# ApplicationListener Listeners
+org.springframework.context.ApplicationListener=\
+com.roboslyq.external.configuration.listener.ExtendPropertySourcesEventListener,\
+com.roboslyq.external.configuration.listener.ExtendPropertySourcesEventListener2
+
+#EnvironmentPostProcessor
+org.springframework.boot.env.EnvironmentPostProcessor=\
+com.roboslyq.external.configuration.processor.ExtendPropertySourceEnvironmentPostProcessor
+
+# Application Context Initializers
+org.springframework.context.ApplicationContextInitializer=\
+com.roboslyq.external.configuration.initializer.ExtendPropertySourcesApplicationContextInitializer
