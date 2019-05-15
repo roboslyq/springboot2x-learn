@@ -16,7 +16,8 @@ public class UserHandler {
     UserMapper userMapper;
     public Mono<ServerResponse> selectOneUser(ServerRequest request) {
         Long id = request.exchange().getAttribute("id");
-        if(null == id) id = 1L;
+        if(null == id) return ServerResponse.ok().body(Mono
+                .just("传入ID不能为空"),String.class);
        return ServerResponse.ok().body(Mono
                .just(userMapper.selectById(1)),User.class);
     }
