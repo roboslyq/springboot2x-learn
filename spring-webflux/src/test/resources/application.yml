@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    webflux:
+      driverClassName: com.mysql.jdbc.Driver
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/spring_learn?useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true
+      username: root
+      password:
