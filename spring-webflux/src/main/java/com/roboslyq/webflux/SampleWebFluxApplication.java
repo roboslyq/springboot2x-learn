@@ -10,6 +10,4 @@ public class SampleWebFluxApplication {
     public static void main(String[] args) {
         SpringApplication.run(SampleWebFluxApplication.class);
     }
-
-
 }

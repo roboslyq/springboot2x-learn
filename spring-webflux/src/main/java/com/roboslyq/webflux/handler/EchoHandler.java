@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+/**
+ * 定义webflux中的handler处理器，即具体的业务逻辑处理器
+ */
 @Component
 public class EchoHandler {
 
@@ -16,6 +19,9 @@ public class EchoHandler {
         return ServerResponse.ok().body(Mono.just(user), User.class);
     }
 
+    /**
+     * 简单的实体抽像
+     */
     static class User {
         private int id;
         private String name;
