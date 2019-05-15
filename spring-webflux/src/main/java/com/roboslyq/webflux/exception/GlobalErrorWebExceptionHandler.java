@@ -14,9 +14,10 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.*;
 import reactor.core.publisher.Mono;
-
+/**
+ * 此类可以正常工作，与{@link ErrorWebExceptionHandlerDemo}通过order来确定优先级
+ */
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 @Component
 @Order(-3)

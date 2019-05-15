@@ -97,8 +97,6 @@ public class MybatisplusTest {
         assertThat(user.getEmail()).isEqualTo("miemie2@baomidou.com");
         assertThat(user.getAge()).isNull();
     }
-
-
     @Test
     public void userSelect() {
         userMapper.insert(
