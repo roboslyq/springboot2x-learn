@@ -8,17 +8,22 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
 import java.util.Objects;
 
 @Service(value = "userHandler")
 public class UserHandler {
     @Autowired
-    UserMapper userMapper;
+   private UserMapper userMapper;
     public Mono<ServerResponse> selectOneUser(ServerRequest request) {
-        Long id = request.exchange().getAttribute("id");
+        Map<String,String> variables = request.pathVariables();
+
+        Long id = Long.valueOf(variables.get("id"));
+
         if(null == id) return ServerResponse.ok().body(Mono
                 .just("传入ID不能为空"),String.class);
-       return ServerResponse.ok().body(Mono
-               .just(userMapper.selectById(1)),User.class);
+
+        return ServerResponse.ok().body(Mono
+               .just(userMapper.selectById(id)),User.class);
     }
 }
