@@ -10,9 +10,10 @@ public class ExampleController {
                 , consumes = { MediaType.APPLICATION_JSON_VALUE
                                 , "!application/xml" }
                 , produces = MediaType.TEXT_PLAIN_VALUE
+                //限制条件：请求头中必须的X-Custom，并且值为Foo
                 , headers = "X-Custom=Foo"
                 , params = "a!=alpha")
     public String example() {
-        return "Hello World";
+        return "Hello World Post";
     }
 }

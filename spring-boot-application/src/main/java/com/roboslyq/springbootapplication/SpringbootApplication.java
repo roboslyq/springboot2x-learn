@@ -17,10 +17,12 @@ public class SpringbootApplication {
         sources.add( SpringbootApplication.class.getName() );
 
         springApplication.setSources(sources);
-        springApplication.setWebApplicationType( WebApplicationType.NONE );
+        springApplication.setWebApplicationType( WebApplicationType.SERVLET );
         ConfigurableApplicationContext configurableApplicationContext = springApplication.run( args );
         SpringbootApplication springbootApplication = configurableApplicationContext.getBean(SpringbootApplication.class);
         System.out.println("Bean -- " + springApplication);
+        System.out.println("parent--"+configurableApplicationContext.getParent());
+        System.out.println(configurableApplicationContext);
     }
 }
 

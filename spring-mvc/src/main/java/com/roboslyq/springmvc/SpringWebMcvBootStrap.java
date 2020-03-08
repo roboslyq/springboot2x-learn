@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
@@ -34,6 +36,8 @@ public class SpringWebMcvBootStrap {
         return registration;
     }
     public static void main(String[] args) {
-        SpringApplication.run(SpringWebMcvBootStrap.class,args);
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringWebMcvBootStrap.class,args);
+        ApplicationContext applicationContext = configurableApplicationContext.getParent();
+        System.out.println(applicationContext);
     }
 }
