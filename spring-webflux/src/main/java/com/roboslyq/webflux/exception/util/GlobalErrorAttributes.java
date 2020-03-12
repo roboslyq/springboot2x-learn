@@ -22,13 +22,13 @@ public class GlobalErrorAttributes extends DefaultErrorAttributes {
             Map<String, Object> errorAttributes = new LinkedHashMap<>();
             errorAttributes.put("code", responseStatusException.getStatus().value());
             errorAttributes.put("msg", responseStatusException.getMessage());
-            errorAttributes.put("data", "hello world");
+            errorAttributes.put("data", "对不起，系统发生异常！");
             return errorAttributes;
         } else {
             Map<String, Object> errorAttributes = super.getErrorAttributes(request, includeStackTrace);
             errorAttributes.put("code", errorAttributes.getOrDefault("status", 404));
-            errorAttributes.put("msg", error.getMessage());
-            errorAttributes.put("data", "hello world");
+            errorAttributes.put("msg", error.fillInStackTrace());
+            errorAttributes.put("data", "对不起，系统发生异常！");
             return errorAttributes;
         }
     }

@@ -11,7 +11,6 @@
 package com.roboslyq.schema;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
-
 /**
  *
  * 〈〉

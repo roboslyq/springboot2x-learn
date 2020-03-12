@@ -2,6 +2,8 @@ package com.roboslyq.webflux.handler;
 
 import com.roboslyq.webflux.entity.User;
 import com.roboslyq.webflux.mapper.UserMapper;
+import com.roboslyq.webflux.service.UserService;
+import com.roboslyq.webflux.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -13,17 +15,34 @@ import java.util.Objects;
 
 @Service(value = "userHandler")
 public class UserHandler {
+
     @Autowired
-   private UserMapper userMapper;
-    public Mono<ServerResponse> selectOneUser(ServerRequest request) {
-        Map<String,String> variables = request.pathVariables();
+    UserService userService;
 
-        Long id = Long.valueOf(variables.get("id"));
 
-        if(null == id) return ServerResponse.ok().body(Mono
-                .just("传入ID不能为空"),String.class);
+    public Mono<ServerResponse> createUser(ServerRequest request) {
+       return ServerResponse
+               .ok()
+               .body(userService.createUser(request.bodyToMono(User.class)),User.class);
+    }
 
-        return ServerResponse.ok().body(Mono
-               .just(userMapper.selectById(id)),User.class);
+    public Mono<ServerResponse> deleteUser(ServerRequest request) {
+        return ServerResponse
+                .ok()
+                .body(userService.deleteUser(request.pathVariable("id")),User.class);
+
+    }
+
+    public Mono<ServerResponse> updateUser(ServerRequest request) {
+        return ServerResponse
+                .ok()
+                .body(userService.updateUser(request.bodyToMono(User.class)),User.class);
+
+    }
+
+    public Mono<ServerResponse> queryUser(ServerRequest request) {
+        return ServerResponse
+                .ok()
+                .body(userService.queryUser(request.pathVariable("id")),User.class);
     }
 }
