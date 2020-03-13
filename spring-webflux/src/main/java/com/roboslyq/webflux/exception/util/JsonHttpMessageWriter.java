@@ -13,6 +13,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author luo.yongqian
+ */
 @Component
 public class JsonHttpMessageWriter implements HttpMessageWriter<Map<String, Object>> {
     @NonNull

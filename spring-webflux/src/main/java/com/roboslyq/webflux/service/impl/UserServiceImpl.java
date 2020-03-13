@@ -16,11 +16,15 @@ import com.roboslyq.webflux.mapper.UserMapper;
 import com.roboslyq.webflux.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
+import java.util.Objects;
+
 /**
- *
  * 〈〉
+ *
  * @author luo.yongqian
  * @date 2020/3/12
  * @since 1.0.0
@@ -32,26 +36,47 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Autowired
-    LocalDb localDb;
+    LocalDb<User> localDb;
 
     @Override
     public Mono<User> createUser(Mono<User> userMono) {
-        return userMono.doOnNext(user -> localDb.put(user.getId()+"",user));
+        return userMono.doOnNext(user -> {
+            System.out.println("start insert / update a user : " + user.getName());
+            localDb.put(user.getId() + "", user);
+            System.out.println("insert / update successed");
+        });
     }
 
     @Override
-    public Mono<User> deleteUser(String userId) {
+    public Mono<User> deleteUser(String id) {
 
-        return Mono.just((User)localDb.remove(userId));
+        return Mono.defer(() -> {
+            System.out.println("start remove a user : " + id);
+            User user = localDb.remove(id);
+            System.out.println("end remove a user ");
+            return Objects.isNull(user) ? Mono.empty() : Mono.just(user);
+        });
     }
 
     @Override
     public Mono<User> updateUser(Mono<User> userMono) {
-        return userMono.doOnNext(user -> localDb.put(user.getId()+"",user));
+        return createUser(userMono);
+
     }
 
     @Override
     public Mono<User> queryUser(String id) {
-        return Mono.just((User)localDb.get(id));
+
+        return Mono.defer(() -> Objects.isNull(localDb.get(id)) ? Mono.empty() : Mono.just(localDb.get(id)));
+    }
+
+    @Override
+    public Flux<User> findAll() {
+        return Flux.fromIterable(localDb.getAll().values()).switchIfEmpty(Flux.empty());
+    }
+
+    @Override
+    public Mono<Map<String, User>> findAll2() {
+        return Mono.just(localDb.getAll()).switchIfEmpty(Mono.empty());
     }
 }

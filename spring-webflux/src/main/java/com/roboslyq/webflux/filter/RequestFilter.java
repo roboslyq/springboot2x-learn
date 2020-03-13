@@ -42,8 +42,10 @@ public class RequestFilter implements WebFilter {
         //添加请求属性key和value
         serverWebExchange.getAttributes().put("url", "https://roboslyq.github.io/");
 
-        /*过滤器链的概念都是类似的，调用过滤器链的filter方法将请求转到下一个filter，如果该filter是最后一  个filter,那就转到
-        该请求对应的handler,也就是controller方法或函数式endpoint */
+        /*
+        * 过滤器链的概念都是类似的，调用过滤器链的filter方法将请求转到下一个filter，如果该filter是最后一个filter,那就转到
+        * 该请求对应的handler,也就是controller方法或函数式endpoint
+        */
         Mono<Void> result =  webFilterChain.filter(serverWebExchange);
 
         System.out.println("[com.roboslyq.webflux.filter.RequestFilter :] end filter... ...");

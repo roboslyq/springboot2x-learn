@@ -11,7 +11,10 @@
 package com.roboslyq.webflux.service;
 
 import com.roboslyq.webflux.entity.User;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Map;
 
 /**
  *
@@ -29,5 +32,9 @@ public interface UserService {
     Mono<User> updateUser(Mono<User> userMono);
 
     Mono<User> queryUser(String id);
+
+    Flux<User> findAll();
+
+    Mono<Map<String,User>> findAll2();
 
 }

@@ -1,11 +1,16 @@
 package com.roboslyq.webflux.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ *  传统的WebMvc控制器，返回的是普通对象。
+ *  @author luo.yongqian
+ *
+ */
 @RestController
-public class ExampleController {
+public class WebmvcController {
     @PostMapping(path = "/"
                 , consumes = { MediaType.APPLICATION_JSON_VALUE
                                 , "!application/xml" }
@@ -16,4 +21,11 @@ public class ExampleController {
     public String example() {
         return "Hello World Post";
     }
+
+
+    @GetMapping("/")
+    public String welcome() {
+        return "Hello World Get";
+    }
+
 }

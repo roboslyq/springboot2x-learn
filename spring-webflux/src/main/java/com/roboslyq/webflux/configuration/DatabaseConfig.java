@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
+/**
+ * @author luo.yongqian
+ */
 @Configuration
 public class DatabaseConfig {
     /**
@@ -17,10 +20,8 @@ public class DatabaseConfig {
      *          'url' attribute is not specified and no embedded datasource could be configured.
      * Reason: Failed to determine a suitable driver class
      */
-    //设置为默认数据源
     @Primary
     @Bean(name = "dataSourcePrimary")
-    //数据源参数前缀
     @ConfigurationProperties(prefix = "spring.datasource.webflux")
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();

@@ -4,11 +4,13 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 用户实体对应表 user
+ *
+ * 1、@Data： lombok注解：生成很多方法，不仅是Getter和setter。很暴力！！！
+ * 2、@Accessors： lombok注解：生成链式调用的getter和setter方法
+ *
+ * @author luo.yongqian
  */
-//lombok注解：生成很多方法，不仅是Getter和setter。很暴力！！！
 @Data
-//lombok注解：生成链式调用的getter和setter方法
 @Accessors(chain = true)
 public class User {
     private Long id;
@@ -18,4 +20,10 @@ public class User {
     private String nickname;
     private String sex;
     private String password;
+
+    public static void main(String[] args) {
+        User user = new User();
+        user.setEmail("robosloveu@163.com")
+                .setName("luoyq");
+    }
 }

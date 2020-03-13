@@ -12,6 +12,8 @@ package com.roboslyq.webflux.localdb;
 
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -22,32 +24,36 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0.0
  */
 @Component
-public class LocalDb {
+public class LocalDb<T> {
 
-private ConcurrentHashMap<String,Object> db;
+private Map<String,T> db;
 
     public LocalDb() {
         db = new ConcurrentHashMap();
     }
 
 
-    public Object put(String key, Object value){
+    public T put(String key, T value){
         db.put(key,value);
         return value;
     }
 
-    public Object remove(String key){
+    public T remove(String key){
         return db.remove(key);
     }
 
-    public Object update(String key, Object value){
+    public T update(String key, T value){
         this.remove(key);
         this.put(key,value);
         return value;
     }
 
-    public Object get(String key){
+    public T get(String key){
         return db.get(key);
+    }
+
+    public Map<String,T> getAll(){
+        return db;
     }
 
 }
