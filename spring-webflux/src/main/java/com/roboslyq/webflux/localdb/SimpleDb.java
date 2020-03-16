@@ -1,6 +1,6 @@
 /**
  * Copyright (C), 2015-2020
- * FileName: LocalDb
+ * FileName: SimpleDb
  * Author:   luo.yongqian
  * Date:     2020/3/12 18:48
  * Description:
@@ -24,11 +24,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0.0
  */
 @Component
-public class LocalDb<T> {
+public class SimpleDb<T> {
 
 private Map<String,T> db;
 
-    public LocalDb() {
+    public SimpleDb() {
         db = new ConcurrentHashMap();
     }
 

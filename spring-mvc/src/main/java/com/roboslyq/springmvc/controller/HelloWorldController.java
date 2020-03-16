@@ -16,10 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 public class HelloWorldController {
     @RequestMapping("")
     public String index(HttpServletRequest request) {
+        System.out.println(request.getAttribute("filter1"));
         System.out.println(request.getContextPath());
         System.out.println(request.getMethod());
         System.out.println("hello");
         String a = "bb";
         return "index";
+    }
+    @RequestMapping("/exception")
+    public String exception(HttpServletRequest request) {
+
+        throw new NullPointerException("异常测试");
     }
 }

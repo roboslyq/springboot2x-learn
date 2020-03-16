@@ -10,10 +10,12 @@ import javax.servlet.ServletRequestListener;
 @Component
 public class MyListener implements ServletContextListener {
 
+    @Override
     public  void contextInitialized(ServletContextEvent sce) {
         System.err.println("servlet Context initailized .... ...");
     }
 
+    @Override
     public  void contextDestroyed(ServletContextEvent sce) {
         System.err.println("servlet Context contextDestroyed .... ...");
     }

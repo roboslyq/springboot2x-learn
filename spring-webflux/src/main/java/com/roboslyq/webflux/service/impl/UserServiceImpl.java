@@ -11,7 +11,7 @@
 package com.roboslyq.webflux.service.impl;
 
 import com.roboslyq.webflux.entity.User;
-import com.roboslyq.webflux.localdb.LocalDb;
+import com.roboslyq.webflux.localdb.SimpleDb;
 import com.roboslyq.webflux.mapper.UserMapper;
 import com.roboslyq.webflux.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Autowired
-    LocalDb<User> localDb;
+    SimpleDb<User> localDb;
 
     @Override
     public Mono<User> createUser(Mono<User> userMono) {
