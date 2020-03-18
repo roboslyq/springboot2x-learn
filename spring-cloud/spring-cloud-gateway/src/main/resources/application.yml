@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      routes:
+        #      routes:
+        # =====================================
+        - id: user-channel
+          uri: http://127.0.0.1:8081
+          order: 8000
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: g
+          uri: https://github.com/roboslyq/
+          order: 8000
+          predicates:
+            - Path=/g/**
+          filters:
+            - StripPrefix=1

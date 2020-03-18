@@ -13,7 +13,8 @@
         <module>spring-external-configuration</module>
         <module>spring-mvc-view</module>
         <module>spring-webflux</module>
-        <module>spring-schema</module>
+        <module>spring-schema-test</module>
+        <module>spring-cloud</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
