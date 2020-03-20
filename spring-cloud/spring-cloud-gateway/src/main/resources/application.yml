@@ -10,19 +10,24 @@ spring:
           lowerCaseServiceId: true
           enabled: true
       routes:
-        #      routes:
-        # =====================================
+        # routes: =====================================
         - id: user-channel
           uri: http://127.0.0.1:8081
           order: 8000
           predicates:
-            - Path=/user/**
+          - Path=/user/**
           filters:
-            - StripPrefix=1
+          - name: Demo
+            args:
+              id: 2
+              val: 2
         - id: g
           uri: https://github.com/roboslyq/
           order: 8000
           predicates:
-            - Path=/g/**
+          - Path=/g/**
           filters:
-            - StripPrefix=1
+          - name: Demo
+            args:
+              id: 1
+              val: 1
