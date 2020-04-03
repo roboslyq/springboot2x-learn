@@ -11,13 +11,18 @@
 package com.roboslyq.webflux.controller;
 
 import com.roboslyq.webflux.entity.User;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ZeroCopyHttpOutputMessage;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
-//import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
+import java.io.File;
+
+//import org.springframework.web.reactive.function.server.ServerRequest;
 
 /**
  *
@@ -61,5 +66,17 @@ public class WebFluxController {
         System.out.println(user.getId());
         System.out.println(url);
         return user;
+    }
+
+
+    @GetMapping("/download")
+    public Mono<Void> download(ServerWebExchange serverWebExchange
+            , ServerHttpRequest request
+            , ServerHttpResponse response) {
+        File file = new File("D:\\ShutdownHook.java");
+        ZeroCopyHttpOutputMessage zeroCopyResponse = (ZeroCopyHttpOutputMessage) response;
+        response.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=shutdown.java");
+        response.getHeaders().setContentType(MediaType.IMAGE_PNG);
+        return zeroCopyResponse.writeWith(file, 0, file.length());
     }
 }

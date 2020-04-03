@@ -10,7 +10,7 @@
  */
 package com.roboslyq.webflux.handler;
 
-import com.oracle.tools.packager.IOUtils;
+//import com.oracle.tools.packager.IOUtils;
 import com.roboslyq.webflux.common.Constants;
 import com.roboslyq.webflux.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +66,7 @@ public class FileHandler {
 
     /**
      * 单个文件上传方式2
+     *
      * @param request
      * @return
      */
@@ -99,16 +100,16 @@ public class FileHandler {
         File file = path.toFile();
         if (file.exists()) {
             return ServerResponse.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+fileName)
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
                     .contentType(MediaType.TEXT_PLAIN)
                     .contentLength(file.length())
                     .body(fromDataBuffers(Mono.create(r -> {
                         DataBuffer buf = null;
-                        try {
-                            buf = new DefaultDataBufferFactory().wrap(IOUtils.readFully(file));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//                            buf = new DefaultDataBufferFactory().wrap(IOUtils.readFully(file));
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
                         r.success(buf);
                     })));
         } else {
