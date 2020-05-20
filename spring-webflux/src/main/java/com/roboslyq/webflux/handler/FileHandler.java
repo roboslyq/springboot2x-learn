@@ -10,7 +10,7 @@
  */
 package com.roboslyq.webflux.handler;
 
-//import com.oracle.tools.packager.IOUtils;
+import org.apache.commons.io.IOUtils;
 import com.roboslyq.webflux.common.Constants;
 import com.roboslyq.webflux.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,9 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -105,11 +107,11 @@ public class FileHandler {
                     .contentLength(file.length())
                     .body(fromDataBuffers(Mono.create(r -> {
                         DataBuffer buf = null;
-//                        try {
-//                            buf = new DefaultDataBufferFactory().wrap(IOUtils.readFully(file));
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
+                        try {
+                            buf = new DefaultDataBufferFactory().wrap(IOUtils.toByteArray(new InputStreamReader(new FileInputStream(file))));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         r.success(buf);
                     })));
         } else {
