@@ -1,11 +1,11 @@
 spring:
   datasource:
     primary:
-      username: test_user
-      password: 1q2w3e4r(A
+      username: root
+      password: a(A
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 如果未使用druid,下面参数是jdbc-url。如果已经使用druid,下面参数是url
-      url: jdbc:mysql://47.93.201.88:3306/test_primary?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://:3306/test_primary?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
       useGlobalDataSourceStat: true
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       filters: stat,wall,log4j
@@ -21,11 +21,11 @@ spring:
       validationQuery: SELECT 1 FROM DUAL
 
     secondary:
-      username: test_user
-      password: 1q2w3e4r(A
+      username: root
+      password: a(A
       driver-class-name: com.mysql.cj.jdbc.Driver
       # 如果未使用druid,下面参数是jdbc-url。如果已经使用druid,下面参数是url
-      url: jdbc:mysql://47.93.201.88:3306/test_secondary?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://127.0.0.1:3306/test_secondary?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
       useGlobalDataSourceStat: true
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       filters: stat,wall,log4j
