@@ -16,6 +16,7 @@
         <module>spring-schema-test</module>
         <module>spring-cloud</module>
         <module>spring-data-jpa</module>
+        <module>mq</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
